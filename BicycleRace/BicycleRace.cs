@@ -821,7 +821,7 @@ namespace BicycleRace
                 try
                 {
                     //ex.SaveAs("C:\\Users\\Csaba\\Documents\\Visual Studio 2010\\Projects\\BicycleRace_2\\VersenyAdatok.xlsx");
-                    ex.SaveAs(@"VersenyAdatok.xlsx");
+                    ex.SaveAs(@"VersenyAdatok" + DateTime.Today.ToShortDateString().ToString() + ".xlsx");
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
