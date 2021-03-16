@@ -870,6 +870,12 @@ namespace BicycleRace
             {
                 try
                 {
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Refresh();
+                    dataGridView2.Rows.Clear();
+                    dataGridView2.Refresh();
+                    dataGridView3.Rows.Clear();
+                    dataGridView3.Refresh();
                     //ExcelClass excel = new ExcelClass("C:\\Users\\Csaba\\Documents\\Visual Studio 2010\\Projects\\BicycleRace_2\\VersenyAdatok.xlsx", 1);
                     ExcelClass excel = new ExcelClass(@"VersenyAdatok.xlsx", 1);
 
