@@ -830,9 +830,11 @@ namespace BicycleRace
                 
                 ex.Close();
                 MessageBox.Show("Sikeres mentés", "Információ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.ActiveControl = txtScan.Control;
             }
             else { return; }
+            GC.Collect();                   //Excel folyamatok felszabadítása
+            GC.WaitForPendingFinalizers();  //Excel folyamatok felszabadítása
+            this.ActiveControl = txtScan.Control;
         }
 
         private string[] ColumnName = new string[] { "Sorszám", "Vezetéknév és keresztnév", "Életkor", "Nő", "Férfi", "Korcsoport", "Táv", "Csapatnév", "Rajtszám", "Elrajtolási idő", "", "Indulás", "", "Érkezés", "Időeredmény"};
@@ -896,16 +898,16 @@ namespace BicycleRace
 
                     excel.Close();
                     MessageBox.Show("Sikeres adatbetöltés", "Információ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.ActiveControl = txtScan.Control;
                 }
                 catch (System.Runtime.InteropServices.COMException)
                 {
                     MessageBox.Show("Nem létező fájl!", "Figyelmeztetés!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                
             }
             else {return;}
+            GC.Collect();                   //Excel folyamatok felszabadítása
+            GC.WaitForPendingFinalizers();  //Excel folyamatok felszabadítása
+            this.ActiveControl = txtScan.Control;
         }
 
         private void OpenData(DataGridView dgv, ExcelClass e)   //adatbetöltés eljárás
