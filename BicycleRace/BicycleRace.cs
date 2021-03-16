@@ -882,6 +882,8 @@ namespace BicycleRace
 
                     using (OpenFileDialog openFileDialog = new OpenFileDialog())
                     {
+                        openFileDialog.Filter = "Excel Files|*.xls;*.xlsx"; //csak Excel fájlok nyitása
+
                         if (openFileDialog.ShowDialog() == DialogResult.OK)
                         {
                             filePath = openFileDialog.FileName;
