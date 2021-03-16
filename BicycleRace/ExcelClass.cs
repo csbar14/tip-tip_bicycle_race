@@ -84,7 +84,7 @@ namespace BicycleRace
 
         public void Close()
         {
-            wb.Close();
+            wb.Close(false);
         }
 
         public void ProtectSheet(string Password)       //az Excel mentés után csak jelszóval feloldás után módosítható
