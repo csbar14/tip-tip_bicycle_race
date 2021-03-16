@@ -820,7 +820,6 @@ namespace BicycleRace
 
                 try
                 {
-                    //ex.SaveAs("C:\\Users\\Csaba\\Documents\\Visual Studio 2010\\Projects\\BicycleRace_2\\VersenyAdatok.xlsx");
                     string time = DateTime.Now.ToString("HH:mm:ss");
                     ex.SaveAs(@"VersenyAdatok" + time.Replace(':', '-') + ".xlsx");
                 }
@@ -876,8 +875,18 @@ namespace BicycleRace
                     dataGridView2.Refresh();
                     dataGridView3.Rows.Clear();
                     dataGridView3.Refresh();
-                    //ExcelClass excel = new ExcelClass("C:\\Users\\Csaba\\Documents\\Visual Studio 2010\\Projects\\BicycleRace_2\\VersenyAdatok.xlsx", 1);
-                    ExcelClass excel = new ExcelClass(@"VersenyAdatok.xlsx", 1);
+
+                    var filePath = string.Empty;
+
+                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    {
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            filePath = openFileDialog.FileName;
+                        }
+                    }
+
+                    ExcelClass excel = new ExcelClass(filePath, 1);
 
                     OpenData(dataGridView1, excel);
                     excel.SelectWorksheet(2);
