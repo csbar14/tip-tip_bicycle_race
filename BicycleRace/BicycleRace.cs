@@ -963,6 +963,7 @@ namespace BicycleRace
             if (dialogResult_Save== DialogResult.OK) 
             {
                 ExcelClass ex = new ExcelClass();
+
                 ex.CreateNewFile();
                 ex.CreateNewSheet();
                 ex.CreateNewSheet();
