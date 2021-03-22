@@ -675,6 +675,120 @@ namespace BicycleRace
 
             dataGridView3.Columns.Insert(15, buttonColumnNull3);
 
+            //Összegzés DGV --------------------------------------------------------------------------------------------------------------
+
+            DataGridViewTextBoxColumn number4 =
+            new DataGridViewTextBoxColumn();
+            number4.Name = "Number";
+            number4.HeaderText = "Sorszám";
+
+            dataGridView4.Columns.Insert(0, number4);
+
+            DataGridViewTextBoxColumn name4 =
+            new DataGridViewTextBoxColumn();
+            name4.Name = "Name";
+            name4.HeaderText = "Vezetéknév és keresztnév";
+
+            dataGridView4.Columns.Insert(1, name4);
+
+            DataGridViewTextBoxColumn age4 =
+            new DataGridViewTextBoxColumn();
+            age4.Name = "Age";
+            age4.HeaderText = "Életkor";
+
+            dataGridView4.Columns.Insert(2, age4);
+
+            DataGridViewCheckBoxColumn checkboxColumnWoman4 =
+            new DataGridViewCheckBoxColumn();
+            checkboxColumnWoman4.Name = "Woman";
+            checkboxColumnWoman4.HeaderText = "Nő";
+
+            dataGridView4.Columns.Insert(3, checkboxColumnWoman4);
+
+            DataGridViewCheckBoxColumn checkboxColumnMan4 =
+            new DataGridViewCheckBoxColumn();
+            checkboxColumnMan4.Name = "Man";
+            checkboxColumnMan4.HeaderText = "Férfi";
+
+            dataGridView4.Columns.Insert(4, checkboxColumnMan4);
+
+            DataGridViewTextBoxColumn ageGroup4 =
+            new DataGridViewTextBoxColumn();
+            ageGroup4.Name = "AgeGroup";
+            ageGroup4.HeaderText = "Korcsoport";
+
+            dataGridView4.Columns.Insert(5, ageGroup4);
+
+            DataGridViewTextBoxColumn km4 =
+            new DataGridViewTextBoxColumn();
+            km4.Name = "Km";
+            km4.HeaderText = "Táv";
+
+            dataGridView4.Columns.Insert(6, km4);
+
+            DataGridViewTextBoxColumn team4 =
+            new DataGridViewTextBoxColumn();
+            team4.Name = "Team";
+            team4.HeaderText = "Csapatnév";
+
+            dataGridView4.Columns.Insert(7, team4);
+
+            DataGridViewTextBoxColumn startNumber4 =
+            new DataGridViewTextBoxColumn();
+            startNumber4.Name = "StartNumber";
+            startNumber4.HeaderText = "Rajtszám";
+
+            dataGridView4.Columns.Insert(8, startNumber4);
+
+            DataGridViewTextBoxColumn startTimePlan1 =
+            new DataGridViewTextBoxColumn();
+            startTimePlan1.Name = "StartTimePlan";
+            startTimePlan1.HeaderText = "Elrajtolási idő";
+
+            dataGridView4.Columns.Insert(9, startTimePlan1);
+
+            DataGridViewTextBoxColumn start4 =
+            new DataGridViewTextBoxColumn();
+            start4.Name = "Start";
+            start4.HeaderText = "";
+
+            dataGridView4.Columns.Insert(10, start4);
+
+            DataGridViewTextBoxColumn startTime4 =
+            new DataGridViewTextBoxColumn();
+            startTime4.Name = "StartTime";
+            startTime4.HeaderText = "Indulás";
+
+            dataGridView4.Columns.Insert(11, startTime4);
+
+            DataGridViewTextBoxColumn stop4 =
+            new DataGridViewTextBoxColumn();
+            stop4.Name = "Stop";
+            stop4.HeaderText = "";
+
+            dataGridView4.Columns.Insert(12, stop4);
+
+            DataGridViewTextBoxColumn stopTime4 =
+            new DataGridViewTextBoxColumn();
+            stopTime4.Name = "StopTime";
+            stopTime4.HeaderText = "Érkezés";
+
+            dataGridView4.Columns.Insert(13, stopTime4);
+
+            DataGridViewTextBoxColumn result4 =
+            new DataGridViewTextBoxColumn();
+            result4.Name = "Result";
+            result4.HeaderText = "Időeredmény";
+
+            dataGridView4.Columns.Insert(14, result4);
+
+            DataGridViewTextBoxColumn null4 =
+            new DataGridViewTextBoxColumn();
+            null4.Name = "Null";
+            null4.HeaderText = "";
+
+            dataGridView4.Columns.Insert(15, null4);
+
             dataGridView1.Columns[0].Width = 55;
             dataGridView1.Columns[1].Width = 150;
             dataGridView1.Columns[2].Width = 55;
@@ -726,11 +840,30 @@ namespace BicycleRace
             dataGridView3.Columns[14].Width = 85;
             dataGridView3.Columns[15].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
+            dataGridView4.Columns[0].Width = 55;
+            dataGridView4.Columns[1].Width = 150;
+            dataGridView4.Columns[2].Width = 55;
+            dataGridView4.Columns[3].Width = 55;
+            dataGridView4.Columns[4].Width = 55;
+            dataGridView4.Columns[5].Width = 70;
+            dataGridView4.Columns[6].Width = 110;
+            dataGridView4.Columns[7].Width = 150;
+            dataGridView4.Columns[8].Width = 70;
+            dataGridView4.Columns[9].Width = 80;
+            dataGridView4.Columns[10].Width = 70;
+            dataGridView4.Columns[11].Width = 85;
+            dataGridView4.Columns[12].Width = 70;
+            dataGridView4.Columns[13].Width = 85;
+            dataGridView4.Columns[14].Width = 85;
+            dataGridView4.Columns[15].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dataGridView2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dataGridView3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridView4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
@@ -750,11 +883,19 @@ namespace BicycleRace
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             }
 
+            foreach (DataGridViewColumn column in dataGridView4.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
+
             dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             dataGridView2.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             dataGridView3.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dataGridView4.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             dataGridView1.Columns[0].ReadOnly = true;
             dataGridView1.Columns[0].DefaultCellStyle.BackColor = Color.LightGray;
@@ -796,6 +937,23 @@ namespace BicycleRace
             dataGridView3.Columns[13].DefaultCellStyle.BackColor = Color.LightGray;
             dataGridView3.Columns[14].ReadOnly = true;
             dataGridView3.Columns[14].DefaultCellStyle.BackColor = Color.LightGray;
+
+            dataGridView4.Columns[0].ReadOnly = true;
+            dataGridView4.Columns[1].ReadOnly = true;
+            dataGridView4.Columns[2].ReadOnly = true;
+            dataGridView4.Columns[3].ReadOnly = true;
+            dataGridView4.Columns[4].ReadOnly = true;
+            dataGridView4.Columns[5].ReadOnly = true;
+            dataGridView4.Columns[6].ReadOnly = true;
+            dataGridView4.Columns[7].ReadOnly = true;
+            dataGridView4.Columns[8].ReadOnly = true;
+            dataGridView4.Columns[9].ReadOnly = true;
+            dataGridView4.Columns[10].ReadOnly = true;
+            dataGridView4.Columns[11].ReadOnly = true;
+            dataGridView4.Columns[12].ReadOnly = true;
+            dataGridView4.Columns[13].ReadOnly = true;
+            dataGridView4.Columns[14].ReadOnly = true;
+            dataGridView4.Columns[15].ReadOnly = true;
         }
 
         //Adatok mentése Excel fájlba
