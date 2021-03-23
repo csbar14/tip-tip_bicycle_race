@@ -962,6 +962,9 @@ namespace BicycleRace
             DialogResult dialogResult_Save = MessageBox.Show("Szeretné menteni az adatokat?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult_Save== DialogResult.OK) 
             {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
+
                 ExcelClass ex = new ExcelClass();
 
                 ex.CreateNewFile();
@@ -993,6 +996,7 @@ namespace BicycleRace
             else { return; }
             GC.Collect();                   //Excel folyamatok felszabadítása
             GC.WaitForPendingFinalizers();  //Excel folyamatok felszabadítása
+            Application.UseWaitCursor = false;
             this.ActiveControl = txtScan.Control;
         }
 
@@ -1049,6 +1053,9 @@ namespace BicycleRace
                         }
                     }
 
+                    Cursor.Current = Cursors.WaitCursor;
+                    Application.UseWaitCursor = true;
+
                     ExcelClass excel = new ExcelClass(filePath, 1);
 
                     OpenData(dataGridView1, excel);
@@ -1068,6 +1075,7 @@ namespace BicycleRace
             else {return;}
             GC.Collect();                   //Excel folyamatok felszabadítása
             GC.WaitForPendingFinalizers();  //Excel folyamatok felszabadítása
+            Application.UseWaitCursor = false;
             this.ActiveControl = txtScan.Control;
         }
 
