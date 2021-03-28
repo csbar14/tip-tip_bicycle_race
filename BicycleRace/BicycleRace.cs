@@ -1040,6 +1040,8 @@ namespace BicycleRace
                     dataGridView2.Refresh();
                     dataGridView3.Rows.Clear();
                     dataGridView3.Refresh();
+                    dataGridView4.Rows.Clear();
+                    dataGridView4.Refresh();
 
                     var filePath = string.Empty;
 
@@ -1058,11 +1060,11 @@ namespace BicycleRace
 
                     ExcelClass excel = new ExcelClass(filePath, 1);
 
-                    OpenData(dataGridView1, excel);
+                    OpenData(dataGridView1, dataGridView4, excel);
                     excel.SelectWorksheet(2);
-                    OpenData(dataGridView2, excel);
+                    OpenData(dataGridView2, dataGridView4, excel);
                     excel.SelectWorksheet(3);
-                    OpenData(dataGridView3, excel);
+                    OpenData(dataGridView3, dataGridView4, excel);
 
                     excel.Close();
                     MessageBox.Show("Sikeres adatbetöltés", "Információ", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1079,32 +1081,42 @@ namespace BicycleRace
             this.ActiveControl = txtScan.Control;
         }
 
-        private void OpenData(DataGridView dgv, ExcelClass e)   //adatbetöltés eljárás
+        private void OpenData(DataGridView dgv, DataGridView dgv4, ExcelClass e)   //adatbetöltés eljárás
         {
             int i = 0;
+            int dgv4Rows = dgv4.Rows.Count - 1;
             while (e.ReadCell(i + 1, 1) != "Empty cell")
             {
-                //0 -   Sorszám
                 dgv.Rows.Add();   //mindig az utolsó sor elé teszi az új sort
+                dgv4.Rows.Add();   //mindig az utolsó sor elé teszi az új sort
+                //0 -   Sorszám
+                dgv4.Rows[dgv4Rows].Cells[0].Value = e.ReadCell(i + 1, 0);
                 dgv.Rows[i].Cells[1].Value = e.ReadCell(i + 1, 1);
+                dgv4.Rows[dgv4Rows].Cells[1].Value = e.ReadCell(i + 1, 1);
                 dgv.Rows[i].Cells[2].Value = e.ReadCell(i + 1, 2);
+                dgv4.Rows[dgv4Rows].Cells[2].Value = e.ReadCell(i + 1, 2);
                 try
                 {
                     dgv.Rows[i].Cells[3].Value = Convert.ToBoolean(e.ReadCell(i + 1, 3));
+                    dgv4.Rows[dgv4Rows].Cells[3].Value = Convert.ToBoolean(e.ReadCell(i + 1, 3));
                 }
                 catch (System.FormatException)
                 {
                     dgv.Rows[i].Cells[3].Value = "FALSE";
+                    dgv4.Rows[dgv4Rows].Cells[3].Value = "FALSE";
                 }
                 try
                 {
                     dgv.Rows[i].Cells[4].Value = Convert.ToBoolean(e.ReadCell(i + 1, 4));
+                    dgv4.Rows[dgv4Rows].Cells[4].Value = Convert.ToBoolean(e.ReadCell(i + 1, 4));
                 }
                 catch (System.FormatException)
                 {
                     dgv.Rows[i].Cells[4].Value = "FALSE";
+                    dgv4.Rows[dgv4Rows].Cells[4].Value = "FALSE";
                 }
                 dgv.Rows[i].Cells[5].Value = e.ReadCell(i + 1, 5);
+                dgv4.Rows[dgv4Rows].Cells[5].Value = e.ReadCell(i + 1, 5);
                 if (dgv == dataGridView1)
                 {
                     if (e.ReadCell(i + 1, 6) == "Classic 20 Km") 
@@ -1128,8 +1140,11 @@ namespace BicycleRace
                 {
                     dgv.Rows[i].Cells[6].Value = e.ReadCell(i + 1, 6);
                 }
+                dgv4.Rows[dgv4Rows].Cells[6].Value = e.ReadCell(i + 1, 6);
                 dgv.Rows[i].Cells[7].Value = e.ReadCell(i + 1, 7);
+                dgv4.Rows[dgv4Rows].Cells[7].Value = e.ReadCell(i + 1, 7);
                 //8 - Rajtszám
+                dgv4.Rows[dgv4Rows].Cells[8].Value = e.ReadCell(i + 1, 8);
                 try
                 {
                     switch (DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 9))).ToString("HH:mm"))
@@ -1173,34 +1188,44 @@ namespace BicycleRace
                 {
                     dgv.Rows[i].Cells[9].Value = "";
                 }
+                dgv4.Rows[dgv4Rows].Cells[9].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 9))).ToString("HH:mm");
                 //10    -   Start gomb
+                dgv4.Rows[dgv4Rows].Cells[10].Value = "Start";
                 try 
                 {
                     dgv.Rows[i].Cells[11].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 11))).ToString("HH:mm:ss");
+                    dgv4.Rows[dgv4Rows].Cells[11].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 11))).ToString("HH:mm:ss");
                 }
                 catch (System.FormatException)
                 {
                     dgv.Rows[i].Cells[11].Value = "";
+                    dgv4.Rows[dgv4Rows].Cells[11].Value = "";
                 }
+                dgv4.Rows[dgv4Rows].Cells[12].Value = "Stop";
                 //12    -   Stop gomb
                 try
                 {
                     dgv.Rows[i].Cells[13].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 13))).ToString("HH:mm:ss");
+                    dgv4.Rows[dgv4Rows].Cells[13].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 13))).ToString("HH:mm:ss");
                 }
                 catch (System.FormatException)
                 {
                     dgv.Rows[i].Cells[13].Value = "";
+                    dgv4.Rows[dgv4Rows].Cells[13].Value = "";
                 }
                 try 
                 {
                     dgv.Rows[i].Cells[14].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 14))).ToString("HH:mm:ss");
+                    dgv4.Rows[dgv4Rows].Cells[14].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 14))).ToString("HH:mm:ss");
                 }
                 catch (System.FormatException)
                 {
                     dgv.Rows[i].Cells[14].Value = "";
+                    dgv4.Rows[dgv4Rows].Cells[14].Value = "";
                 }
                 //15    -   Null gomb
                 i++;
+                dgv4Rows++;
             }
             // Helyezések beállítása színekkel
             colorResults(dgv);
