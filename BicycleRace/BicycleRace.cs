@@ -1188,7 +1188,14 @@ namespace BicycleRace
                 {
                     dgv.Rows[i].Cells[9].Value = "";
                 }
-                dgv4.Rows[dgv4Rows].Cells[9].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 9))).ToString("HH:mm");
+                try
+                {
+                    dgv4.Rows[dgv4Rows].Cells[9].Value = DateTime.FromOADate(Convert.ToDouble(e.ReadCell(i + 1, 9))).ToString("HH:mm");
+                }
+                catch (System.FormatException)
+                {
+                    dgv4.Rows[dgv4Rows].Cells[9].Value = "";
+                }
                 //10    -   Start gomb
                 dgv4.Rows[dgv4Rows].Cells[10].Value = "Start";
                 try 
