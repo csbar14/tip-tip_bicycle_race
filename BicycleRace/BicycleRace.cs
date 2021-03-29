@@ -122,6 +122,14 @@ namespace BicycleRace
                 if (dgv.Rows[e.RowIndex].Cells[11].Value == null || dgv.Rows[e.RowIndex].Cells[11].Value.ToString() == "")
                 {
                     dgv.Rows[e.RowIndex].Cells[11].Value = DateTime.Now.ToString("HH:mm:ss");
+                    foreach (DataGridViewRow row in dataGridView4.Rows)
+                    {
+                        if (row.Cells[8].Value.ToString() == dgv.Rows[e.RowIndex].Cells[8].Value.ToString())
+                        {
+                            row.Cells[11].Value = dgv.Rows[e.RowIndex].Cells[11].Value;
+                            break;
+                        }
+                    }
                 }
                 else 
                 {
@@ -138,6 +146,15 @@ namespace BicycleRace
                         dgv.Rows[e.RowIndex].Cells[13].Value = stop.ToString("HH:mm:ss");
                         TimeSpan result = stop - DateTime.Parse(dgv.Rows[e.RowIndex].Cells[11].Value.ToString());
                         dgv.Rows[e.RowIndex].Cells[14].Value = result.ToString(@"hh\:mm\:ss");
+                        foreach (DataGridViewRow row in dataGridView4.Rows)
+                        {
+                            if (row.Cells[8].Value.ToString() == dgv.Rows[e.RowIndex].Cells[8].Value.ToString())
+                            {
+                                row.Cells[13].Value = dgv.Rows[e.RowIndex].Cells[13].Value;
+                                row.Cells[14].Value = dgv.Rows[e.RowIndex].Cells[14].Value;
+                                break;
+                            }
+                        }
 
                         // Helyezések beállítása színekkel
                         colorResults(dgv);
@@ -167,6 +184,15 @@ namespace BicycleRace
                         {
                             dgv.Rows[e.RowIndex].Cells[11].Value = "";
                             dgv.Rows[e.RowIndex].Cells[11].Value = null;
+                            foreach (DataGridViewRow row in dataGridView4.Rows)
+                            {
+                                if (row.Cells[8].Value.ToString() == dgv.Rows[e.RowIndex].Cells[8].Value.ToString())
+                                {
+                                    row.Cells[11].Value = "";
+                                    row.Cells[11].Value = null;
+                                    break;
+                                }
+                            }
                         }
                         else { return; }
                     }
