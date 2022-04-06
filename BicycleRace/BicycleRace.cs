@@ -1321,6 +1321,7 @@ namespace BicycleRace
         {
             foreach (DataGridViewRow row in dgv.Rows)
             {
+                int rowindex = 0;
                 try
                 {
                     if (row.Cells[8].Value.ToString() == startnumber.Substring(1))
@@ -1328,6 +1329,15 @@ namespace BicycleRace
                         if (row.Cells[11].Value == null || row.Cells[11].Value.ToString() == "")
                         {
                             row.Cells[11].Value = DateTime.Now.ToString("HH:mm:ss");
+                            rowindex = row.Cells[11].RowIndex;
+                            foreach (DataGridViewRow rowSummary in dataGridView4.Rows)
+                            {
+                                if (rowSummary.Cells[8].Value.ToString() == startnumber.Substring(1))
+                                {
+                                    rowSummary.Cells[11].Value = dgv.Rows[rowindex].Cells[11].Value;
+                                    break;
+                                }
+                            }
                             break;
                         }
                         else if (row.Cells[13].Value == null || row.Cells[13].Value.ToString() == "")
@@ -1338,9 +1348,20 @@ namespace BicycleRace
                             {
                                 row.Cells[13].Value = stop.ToString("HH:mm:ss");
                                 row.Cells[14].Value = result.ToString(@"hh\:mm\:ss");
+                                rowindex = row.Cells[11].RowIndex;
 
                                 // Helyezések beállítása színekkel
                                 colorResults(dgv);
+
+                                foreach (DataGridViewRow rowSummary in dataGridView4.Rows)
+                                {
+                                    if (rowSummary.Cells[8].Value.ToString() == startnumber.Substring(1))
+                                    {
+                                        rowSummary.Cells[13].Value = dgv.Rows[rowindex].Cells[13].Value;
+                                        rowSummary.Cells[14].Value = dgv.Rows[rowindex].Cells[14].Value;
+                                        break;
+                                    }
+                                }
                             }
                             break;
                         }
