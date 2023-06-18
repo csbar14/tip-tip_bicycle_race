@@ -83,7 +83,7 @@ namespace BicycleRace
             if (e.ColumnIndex == 1)
             {
                 dataGridView2.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
-                dataGridView2.Rows[e.RowIndex].Cells[6].Value = "MTB 45 Km";
+                dataGridView2.Rows[e.RowIndex].Cells[6].Value = "MTB";
                 if (e.RowIndex == 0)
                 {
                     dataGridView2.Rows[e.RowIndex].Cells[8].Value = Convert.ToInt16(dataGridView2.Rows[e.RowIndex].Cells[0].Value);
@@ -101,7 +101,7 @@ namespace BicycleRace
             if (e.ColumnIndex == 1)
             {
                 dataGridView3.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
-                dataGridView3.Rows[e.RowIndex].Cells[6].Value = "ROAD 70 Km";
+                dataGridView3.Rows[e.RowIndex].Cells[6].Value = "ROAD";
                 if (e.RowIndex == 0)
                 {
                     dataGridView3.Rows[e.RowIndex].Cells[8].Value = Convert.ToInt16(dataGridView3.Rows[e.RowIndex].Cells[0].Value) + 1;
@@ -998,13 +998,13 @@ namespace BicycleRace
                 ex.CreateNewSheet();
 
                 SaveData(dataGridView1, ex);
-                ex.ProtectSheet("guranyi");     //Jelszóval lezárás
+                ex.ProtectSheet("race100");     //Jelszóval lezárás
                 ex.SelectWorksheet(2);
                 SaveData(dataGridView2, ex);
-                ex.ProtectSheet("guranyi");     //Jelszóval lezárás
+                ex.ProtectSheet("race100");     //Jelszóval lezárás
                 ex.SelectWorksheet(3);
                 SaveData(dataGridView3, ex);
-                ex.ProtectSheet("guranyi");     //Jelszóval lezárás
+                ex.ProtectSheet("race100");     //Jelszóval lezárás
 
                 try
                 {
@@ -1264,7 +1264,7 @@ namespace BicycleRace
             colorResults(dgv);
         }
 
-        //A kiválasztott adattáblán (Classic, MTB 25, ROAD 70) rendez időeredmény szerint
+        //A kiválasztott adattáblán (Classic, MTB, ROAD) rendez időeredmény szerint
         private void Sort_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"])
