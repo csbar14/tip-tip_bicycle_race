@@ -124,11 +124,25 @@ namespace BicycleRace
                     dgv.Rows[e.RowIndex].Cells[11].Value = DateTime.Now.ToString("HH:mm:ss");
                     foreach (DataGridViewRow row in dataGridView4.Rows)
                     {
-                        if (row.Cells[8].Value.ToString() == dgv.Rows[e.RowIndex].Cells[8].Value.ToString())
+                        try
                         {
-                            row.Cells[11].Value = dgv.Rows[e.RowIndex].Cells[11].Value;
-                            break;
+                            if (row.Cells[8].Value.ToString() == dgv.Rows[e.RowIndex].Cells[8].Value.ToString())
+                            {
+                                row.Cells[11].Value = dgv.Rows[e.RowIndex].Cells[11].Value;
+                                break;
+                            }
                         }
+                        catch (System.Exception ex)
+                        {
+                            if (ex is System.NullReferenceException || ex is System.FormatException)
+                            {
+                                dgv.Rows[e.RowIndex].Cells[11].Value = "";
+                                MessageBox.Show("Az újonnan regisztrált versenyző nem szerepel egyelőre az összegzés listában. Azonnali mentés és újratöltés szükséges!", "Figyelmeztetés", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                break;         
+                                //MessageBox.Show("Az újonnan regisztrált versenyző nem szerepel egyelőre az összegzés listában. Először mentés és újratöltés szükséges!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        
                     }
                 }
                 else 
